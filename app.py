@@ -1,4 +1,6 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, make_response
+
+import database as db
 
 app = Flask(__name__)
 
@@ -25,6 +27,8 @@ def test():  # put application's code here
 
 @app.route('/hint')
 def hints():  # put application's code here
+    resp = make_response(render_template('base.html'))
+    resp.set_cookie('scvgr_id', )
     return render_template('base.html')
 
 
