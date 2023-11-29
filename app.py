@@ -25,7 +25,7 @@ def test():  # put application's code here
 
 @app.route('/hint')
 def hints():  # put application's code here
-    return render_template('hints.html')
+    return render_template('base.html')
 
 
 if __name__ == '__main__':
