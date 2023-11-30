@@ -25,11 +25,7 @@ def assets_resource_file(resource, file):
 def homepage():  # put application's code here
     return render_template("index.html")
 
-@app.route("/")
-def hint():
-    return render_template("hint.html")
-
-@app.route("/")
+@app.route("/tasks")
 def tasks():
     return render_template("tasks.html")
 
