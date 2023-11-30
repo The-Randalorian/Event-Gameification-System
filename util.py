@@ -28,20 +28,20 @@ def get_make_user(req: request):
         return (user_id, False)
 
 
-def get_hints(user_id):
+def get_incomplete_tasks(user_id):
     results = []
     with db.get_session() as session:
-        stmt = select(db.Task.hint).where(
+        stmt = select(db.Task.task, db.Task.hint).where(
             ~db.Task.completions.any(db.Completion.user_id == user_id)
         )
         results = [data[0] for data in session.execute(stmt).all()]
     return results
 
 
-def get_tasks(user_id):
+def get_complete_tasks(user_id):
     results = []
     with db.get_session() as session:
-        stmt = select(db.Task.task).where(
+        stmt = select(db.Task.task, db.Task.hint).where(
             db.Task.completions.any(db.Completion.user_id == user_id)
         )
         results = [data[0] for data in session.execute(stmt).all()]

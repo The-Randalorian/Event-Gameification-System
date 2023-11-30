@@ -47,7 +47,7 @@ class Completion(Base):
     task: Mapped["Task"] = relationship(back_populates="completions")
 
 
-engine = create_engine(f"sqlite:///{SQLITE_DB_PATH}/database.db", echo=True)
+engine = create_engine(f"sqlite:///{SQLITE_DB_PATH}/database.db", echo=False)
 
 
 def get_session():

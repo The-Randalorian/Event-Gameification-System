@@ -50,8 +50,8 @@ def test():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
     resp = make_response(render_template("hint.html"))
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
-    print(f"Tasks for {user_id}: {util.get_tasks(user_id)}")
-    print(f"Hints for {user_id}: {util.get_hints(user_id)}")
+    print(f"Completed tasks for {user_id}: {util.get_complete_tasks(user_id)}")
+    print(f"Incomplete tasks for {user_id}: {util.get_incomplete_tasks(user_id)}")
     return resp
 
 
