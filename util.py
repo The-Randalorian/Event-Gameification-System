@@ -34,7 +34,7 @@ def get_incomplete_tasks(user_id):
         stmt = select(db.Task.task, db.Task.hint).where(
             ~db.Task.completions.any(db.Completion.user_id == user_id)
         )
-        results = [data[0] for data in session.execute(stmt).all()]
+        results = session.execute(stmt).all()
     return results
 
 
@@ -44,5 +44,5 @@ def get_complete_tasks(user_id):
         stmt = select(db.Task.task, db.Task.hint).where(
             db.Task.completions.any(db.Completion.user_id == user_id)
         )
-        results = [data[0] for data in session.execute(stmt).all()]
+        results = session.execute(stmt).all()
     return results
