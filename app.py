@@ -26,7 +26,7 @@ def homepage():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
     resp = make_response(render_template("index.html"))
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
-    return render_template(resp)
+    return resp
 
 
 @app.route("/hints")
