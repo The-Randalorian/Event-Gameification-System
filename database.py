@@ -1,5 +1,11 @@
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import DeclarativeBase, Session, Mapped, mapped_column
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Session,
+    Mapped,
+    mapped_column,
+    relationship,
+)
 from sqlalchemy import create_engine
 
 import os
@@ -20,20 +26,28 @@ class User(Base):
     __tablename__ = "user"
     id: Mapped[ItemId] = mapped_column(primary_key=True)
 
+    completions: Mapped[list["Completion"]] = relationship(back_populates="user")
+
 
 class Task(Base):
     __tablename__ = "task"
     id: Mapped[ItemId] = mapped_column(primary_key=True)
+    task: Mapped[RawHtml] = mapped_column(nullable=True)
     hint: Mapped[RawHtml] = mapped_column(nullable=True)
 
+    completions: Mapped[list["Completion"]] = relationship(back_populates="task")
 
-class Completions(Base):
+
+class Completion(Base):
     __tablename__ = "completion"
     user_id: Mapped[ItemId] = mapped_column(ForeignKey("user.id"), primary_key=True)
     task_id: Mapped[ItemId] = mapped_column(ForeignKey("task.id"), primary_key=True)
 
+    user: Mapped["User"] = relationship(back_populates="completions")
+    task: Mapped["Task"] = relationship(back_populates="completions")
 
-engine = create_engine(f"sqlite:///{SQLITE_DB_PATH}/database.db")
+
+engine = create_engine(f"sqlite:///{SQLITE_DB_PATH}/database.db", echo=True)
 
 
 def get_session():
