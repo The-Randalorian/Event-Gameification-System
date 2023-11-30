@@ -24,9 +24,9 @@ def assets_resource_file(resource, file):
 @app.route("/")
 def homepage():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
-    resp = make_response(render_template("hint.html"))
+    resp = make_response(render_template("index.html"))
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
-    return render_template("index.html")
+    return render_template(resp)
 
 
 @app.route("/hints")
