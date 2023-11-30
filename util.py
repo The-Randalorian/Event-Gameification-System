@@ -1,4 +1,5 @@
 from flask import request
+from sqlalchemy import select
 
 import database as db
 
@@ -25,3 +26,23 @@ def get_make_user(req: request):
         return (make_new_user(), True)
     else:
         return (user_id, False)
+
+
+def get_incomplete_tasks(user_id):
+    results = []
+    with db.get_session() as session:
+        stmt = select(db.Task.task, db.Task.hint).where(
+            ~db.Task.completions.any(db.Completion.user_id == user_id)
+        )
+        results = session.execute(stmt).all()
+    return results
+
+
+def get_complete_tasks(user_id):
+    results = []
+    with db.get_session() as session:
+        stmt = select(db.Task.task, db.Task.hint).where(
+            db.Task.completions.any(db.Completion.user_id == user_id)
+        )
+        results = session.execute(stmt).all()
+    return results
