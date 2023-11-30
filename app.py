@@ -28,11 +28,16 @@ def homepage():  # put application's code here
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
     return render_template("index.html")
 
-@app.route("/")
-def hint():
-    return render_template("hint.html")
 
-@app.route("/")
+@app.route("/hints")
+def hint():
+    user_id, needs_cookie = util.get_make_user(request)
+    resp = make_response(render_template("hint.html"))
+    resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
+    return resp
+
+
+@app.route("/tasks")
 def tasks():
     user_id, needs_cookie = util.get_make_user(request)
     resp = make_response(render_template("task.html"))
