@@ -1,4 +1,6 @@
-from sqlalchemy import ForeignKey
+import datetime
+
+from sqlalchemy import ForeignKey, DateTime, func
 from sqlalchemy.orm import (
     DeclarativeBase,
     Session,
@@ -42,6 +44,9 @@ class Completion(Base):
     __tablename__ = "completion"
     user_id: Mapped[ItemId] = mapped_column(ForeignKey("user.id"), primary_key=True)
     task_id: Mapped[ItemId] = mapped_column(ForeignKey("task.id"), primary_key=True)
+    timestamp: Mapped[datetime.datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
 
     user: Mapped["User"] = relationship(back_populates="completions")
     task: Mapped["Task"] = relationship(back_populates="completions")
