@@ -28,7 +28,7 @@ def get_make_user(req: request):
         return (user_id, False)
 
 
-def get_incomplete_tasks(user_id):
+def get_incomplete_tasks(user_id: int):
     results = []
     with db.get_session() as session:
         stmt = select(db.Task.task, db.Task.hint).where(
@@ -38,7 +38,7 @@ def get_incomplete_tasks(user_id):
     return results
 
 
-def get_complete_tasks(user_id):
+def get_complete_tasks(user_id: int):
     results = []
     with db.get_session() as session:
         stmt = select(db.Task.task, db.Task.hint).where(
@@ -46,3 +46,19 @@ def get_complete_tasks(user_id):
         )
         results = session.execute(stmt).all()
     return results
+
+
+def complete_task(user_id: int, task_id: int):
+    with db.get_session() as session:
+        stmt = (
+            select(db.Completion)
+            .where(db.Completion.user_id == user_id)
+            .where(db.Completion.task_id == task_id)
+        )
+        if session.execute(stmt).first():
+            print(f"User {user_id} already completed task {task_id}!")
+            return False
+        c = db.Completion(user_id=user_id, task_id=task_id)
+        session.add(c)
+        session.commit()
+    return True

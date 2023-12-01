@@ -24,15 +24,10 @@ def assets_resource_file(resource, file):
 @app.route("/")
 def homepage():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
+    task, task_completed = request.args.get("task"), False
+    if task:
+        task_completed = util.complete_task(user_id, int(task))
     resp = make_response(render_template("index.html"))
-    resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
-    return resp
-
-
-@app.route("/hints")
-def hint():
-    user_id, needs_cookie = util.get_make_user(request)
-    resp = make_response(render_template("hint.html"))
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
     return resp
 
@@ -48,10 +43,14 @@ def tasks():
 @app.route("/test")
 def test():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
-    resp = make_response(render_template("hint.html"))
+    task, task_completed = request.args.get("task"), False
+    if task:
+        task_completed = util.complete_task(user_id, int(task))
+    resp = make_response(render_template("task.html"))
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
     print(f"Completed tasks for {user_id}: {util.get_complete_tasks(user_id)}")
     print(f"Incomplete tasks for {user_id}: {util.get_incomplete_tasks(user_id)}")
+
     return resp
 
 
