@@ -35,7 +35,12 @@ def homepage():  # put application's code here
         closed_tasks[0 : min(len(closed_tasks), 5)],
     )
     resp = make_response(
-        render_template("index.html", open_tasks=open_tasks, closed_tasks=closed_tasks)
+        render_template(
+            "index.html",
+            open_tasks=open_tasks,
+            closed_tasks=closed_tasks,
+            just_scanned=util.did_just_scan(user_id),
+        )
     )
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
     return resp
@@ -48,7 +53,12 @@ def tasks():
         user_id
     ), util.get_complete_tasks(user_id)
     resp = make_response(
-        render_template("task.html", open_tasks=open_tasks, closed_tasks=closed_tasks)
+        render_template(
+            "task.html",
+            open_tasks=open_tasks,
+            closed_tasks=closed_tasks,
+            just_scanned=util.did_just_scan(user_id),
+        )
     )
     resp.set_cookie("scvgr_user_id", str(user_id), 365 * 24 * 60 * 60)
     return resp

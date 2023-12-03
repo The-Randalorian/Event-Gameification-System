@@ -1,5 +1,6 @@
 from flask import request
 from sqlalchemy import select
+from datetime import datetime, timedelta
 
 import database as db
 
@@ -62,3 +63,18 @@ def complete_task(user_id: int, task_id: int):
         session.add(c)
         session.commit()
     return True
+
+
+def did_just_scan(user_id: int):
+    with db.get_session() as session:
+        stmt = (
+            select(db.Completion)
+            .where(db.Completion.user_id == user_id)
+            .order_by(
+                db.Completion.timestamp.desc(),
+            )
+        )
+        comp = session.execute(stmt).first()
+        if comp is None:
+            return False
+        return datetime.utcnow() - comp[0].timestamp < timedelta(minutes=1)

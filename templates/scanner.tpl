@@ -8,3 +8,11 @@
   </div>
 
 </div>
+
+{% if just_scanned %}
+<script type="text/javascript">
+window.onload = function(){
+    alert('You completed a task!');
+}
+</script>
+{% endif %}
