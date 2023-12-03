@@ -5,70 +5,62 @@
 {% endblock %}
 
 {% block body %}
+<!-- Header -->
+    <header id="header">
+        <h1>Florida Poly Scavenger Hunt</h1>
+        <p>Find these things at Florida Poly!</p>
+    </header>
 
 <!-- Main -->
-    <div id="wrapper">
+    <div id="main">
 
-            <!-- Header -->
-            <header id="header" class="alt">
-                <span class="logo"><img src="images/logo.png" alt="" /></span>
-                <h1>Florida Poly Event Gamification</h1>
-                <p>Your go to site to enhance your event with interactive scavenger hunts!<br />
-                Built by Brandon Townes & David Johnston</p>
-            </header>
+        <!-- Content -->
+            <section id="content" class="main">
+                <h2>Instructions</h2>
+                <p>Bellow you will see the list of your current tasks and completed tasks. The list is real time so as you complete tasks you will be able to watch the list update to reflect this. Hints are directly linked to each task, so each hint next to the task will relate only to that task. These hints will also move to the completed sections once a task is completed.</p>
+                <p>To start a task, simply click on the given task to be taken to that tasks page. Once you are on the tasks page you will see a button prompting you to scan a QR code. Once you have found the proper QR code, click the button and scan the QR code with the given window. This will now mark this task as complete and it will automatically be moved into the completed section. </p>
+            </section>
 
-            <!-- Nav -->
-                <nav id="nav">
-                    <ul>
-                        <li><a href="/index.html" class="active">Home</a></li>
-                        <li><a href="#open-tasks">Open Tasks</a></li>
-                        <li><a href="#completed-tasks">Completed Tasks</a></li>
-                    </ul>
-                </nav>
-
-            <div id="main">
-
-                <!-- Open Tasks Section -->
-                <section id="open-tasks" class="main special">
-                    <header class="major">
-                        <h2>Open Tasks</h2>
-                    </header>
-                    <div class="row">
-                        <div class="col-6 col-12-small">
-                            <h3>Tasks</h3>
-                            <ul class="features" id="openTaskList">
-                                <!-- Open tasks will be inserted here -->
-                            </ul>
-                        </div>
-                        <div class="col-6 col-12-small">
-                            <h3>Hints</h3>
-                            <ul class="features" id="completedTaskList">
-                                <!-- Completed tasks will be inserted here -->
-                            </ul>
-                        </div>
+            <!-- Open Tasks Section -->
+            <section id="tasks" class="main special">
+                <header class="major">
+                    <h2>Open Tasks</h2>
+                </header>
+                <div class="row">
+                    <div class="col-6 col-12-small">
+                        <h3>Tasks</h3>
+                        <ul class="features" id="openTaskList">
+                            <!-- Open tasks will be inserted here -->
+                        </ul>
                     </div>
-                </section>
+                    <div class="col-6 col-12-small">
+                        <h3>Hints</h3>
+                        <ul class="features" id="completedTaskList">
+                            <!-- Completed tasks will be inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-                <!-- Completed Tasks Section -->
-                <section id="completed-tasks" class="main special">
-                    <header class="major">
-                        <h2>Completed Tasks</h2>
-                    </header>
-                    <div class="row">
-                        <div class="col-6 col-12-small">
-                            <h3>Tasks</h3>
-                            <ul class="features" id="openTaskList">
-                                <!-- Open tasks will be inserted here -->
-                            </ul>
-                        </div>
-                        <div class="col-6 col-12-small">
-                            <h3>Hints</h3>
-                            <ul class="features" id="completedTaskList">
-                                <!-- Completed tasks will be inserted here -->
-                            </ul>
-                        </div>
-                    </div> 
-            </div>
+            <!-- Completed Tasks Section -->
+            <section id="tasks" class="main special">
+                <header class="major">
+                    <h2>Completed Tasks</h2>
+                </header>
+                <div class="row">
+                    <div class="col-6 col-12-small">
+                        <h3>Tasks</h3>
+                        <ul class="features" id="openTaskList">
+                            <!-- Open tasks will be inserted here -->
+                        </ul>
+                    </div>
+                    <div class="col-6 col-12-small">
+                        <h3>Hints</h3>
+                        <ul class="features" id="completedTaskList">
+                            <!-- Completed tasks will be inserted here -->
+                        </ul>
+                    </div>
+                </div>
             </section>
 
     </div>
