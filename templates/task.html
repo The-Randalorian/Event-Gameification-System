@@ -1,67 +1,59 @@
 {% extends 'base.html' %}
-<title>Florida Poly Scavenger Hunt - Tasks</title>
-{% block head %}
 
+{% block head %}
+<title>Florida Poly Scavenger Hunt - Tasks</title>
 {% endblock %}
 
-{% block body %}
-<!-- Header -->
-    <header id="header">
-        <h1>Florida Poly Scavenger Hunt</h1>
-        <p>Find these things at Florida Poly!</p>
+{% block header %}
+<h1>Florida Poly Scavenger Hunt</h1>
+<p>Find these things at Florida Poly!</p>
+{% endblock %}
+
+{% block main %}
+<!-- Content -->
+<section id="content" class="main">
+    <h2>Instructions</h2>
+    <p>Bellow you will see the list of your current tasks and completed tasks. The list is real time so as you complete tasks you will be able to watch the list update to reflect this. Hints are directly linked to each task, so each hint next to the task will relate only to that task. These hints will also move to the completed sections once a task is completed.</p>
+    <p>To start a task, simply click on the given task to be taken to that tasks page. Once you are on the tasks page you will see a button prompting you to scan a QR code. Once you have found the proper QR code, click the button and scan the QR code with the given window. This will now mark this task as complete and it will automatically be moved into the completed section. </p>
+</section>
+
+<!-- Open Tasks Section -->
+<section id="tasks" class="main special">
+    <header class="major">
+        <h2>Open Tasks</h2>
     </header>
-
-<!-- Main -->
-    <div id="main">
-
-        <!-- Content -->
-            <section id="content" class="main">
-                <h2>Instructions</h2>
-                <p>Bellow you will see the list of your current tasks and completed tasks. The list is real time so as you complete tasks you will be able to watch the list update to reflect this. Hints are directly linked to each task, so each hint next to the task will relate only to that task. These hints will also move to the completed sections once a task is completed.</p>
-                <p>To start a task, simply click on the given task to be taken to that tasks page. Once you are on the tasks page you will see a button prompting you to scan a QR code. Once you have found the proper QR code, click the button and scan the QR code with the given window. This will now mark this task as complete and it will automatically be moved into the completed section. </p>
-            </section>
-
-            <!-- Open Tasks Section -->
-            <section id="tasks" class="main special">
-                <header class="major">
-                    <h2>Open Tasks</h2>
-                </header>
-                <div class="row">
-                    <div class="col-6 col-12-small">
-                        <h3>Tasks</h3>
-                        <ul class="features" id="openTaskList">
-                            <!-- Open tasks will be inserted here -->
-                        </ul>
-                    </div>
-                    <div class="col-6 col-12-small">
-                        <h3>Hints</h3>
-                        <ul class="features" id="completedTaskList">
-                            <!-- Completed tasks will be inserted here -->
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Completed Tasks Section -->
-            <section id="tasks" class="main special">
-                <header class="major">
-                    <h2>Completed Tasks</h2>
-                </header>
-                <div class="row">
-                    <div class="col-6 col-12-small">
-                        <h3>Tasks</h3>
-                        <ul class="features" id="openTaskList">
-                            <!-- Open tasks will be inserted here -->
-                        </ul>
-                    </div>
-                    <div class="col-6 col-12-small">
-                        <h3>Hints</h3>
-                        <ul class="features" id="completedTaskList">
-                            <!-- Completed tasks will be inserted here -->
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
+    <div class="row">
+        <div class="col-12-xlarge tasks-container">
+            <h3>Tasks</h3>
+            <table class="tasks" id="openTaskList">
+                {% for item in open_tasks %}
+                <tr>
+                    <td class="task">{{ item[0] }}</td>
+                    <td class="hint"><a onclick="alert('{{ item[1] }}')">hint</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
+</section>
+
+<!-- Completed Tasks Section -->
+<section id="tasks" class="main special">
+    <header class="major">
+        <h2>Completed Tasks</h2>
+    </header>
+    <div class="row">
+        <div class="col-12-xlarge tasks-container">
+            <h3>Tasks</h3>
+            <table class="tasks" id="openTaskList">
+                {% for item in closed_tasks %}
+                <tr>
+                    <td class="task">{{ item[0] }}</td>
+                    <td class="hint"><a onclick="alert('{{ item[1] }}')">hint</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
 {% endblock %}

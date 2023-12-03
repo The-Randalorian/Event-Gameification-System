@@ -16,8 +16,18 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-                {% block body %}{% endblock %}
+                <!-- Header -->
+                <header id="header">
+                    {% block header %}{% endblock %}
+                </header>
 
+                <!-- Navigation -->
+                {% include 'navigation.tpl' %}
+
+                <!-- Main -->
+                <div id="main">
+                    {% block main %}{% endblock %}
+                </div>
 
 				<!-- Footer -->
 					<footer id="footer">
@@ -49,16 +59,13 @@
 						<p class="copyright">&copy; 2023 Brandon Townes and David Johnston Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
+                <!-- Scanner Modal -->
+                {% include 'scanner.tpl' %}
+
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            {% include 'scripts.tpl' %}
 
 	</body>
 </html>

@@ -21,18 +21,12 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/logo.png" alt="" /></span>
 						<h1>Florida Poly Event Gamification</h1>
-						<p>Your go to site to enhance your event with interactive scavenger hunts!<br />
-						Built by xBrandon Townes & David Johnston</p>
+						<p>Your go-to site to enhance your event with interactive scavenger hunts!<br />
+						Built by Brandon Townes & David Johnston</p>
 					</header>
 
 				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#tasks">Tasks</a></li>
-							<li><a href="#cta">Get Started</a></li>
-						</ul>
-					</nav>
+					{% include 'navigation.tpl' %}
 
 				<!-- Main -->
 					<div id="main">
@@ -55,17 +49,16 @@
 								<h2>Open Tasks</h2>
 							</header>
 							<div class="row">
-								<div class="col-6 col-12-small">
+								<div class="col-12-xlarge tasks-container">
 									<h3>Tasks</h3>
-									<ul class="features" id="openTaskList">
-										<!-- Open tasks will be inserted here -->
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<h3>Hints</h3>
-									<ul class="features" id="completedTaskList">
-										<!-- Completed tasks will be inserted here -->
-									</ul>
+									<table class="tasks" id="openTaskList">
+                                        {% for item in open_tasks %}
+                                        <tr>
+                                            <td class="task">{{ item[0] }}</td>
+                                            <td class="hint"><a onclick="alert('{{ item[1] }}')">hint</a></td>
+                                        </tr>
+                                        {% endfor %}
+									</table>
 								</div>
 							</div>
 							<footer class="major">
@@ -81,17 +74,16 @@
 								<h2>Completed Tasks</h2>
 							</header>
 							<div class="row">
-								<div class="col-6 col-12-small">
+								<div class="col-12-xlarge tasks-container">
 									<h3>Tasks</h3>
-									<ul class="features" id="openTaskList">
-										<!-- Open tasks will be inserted here -->
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<h3>Hints</h3>
-									<ul class="features" id="completedTaskList">
-										<!-- Completed tasks will be inserted here -->
-									</ul>
+									<table class="tasks" id="closedTaskList">
+                                        {% for item in closed_tasks %}
+                                        <tr>
+                                            <td class="task">{{ item[0] }}</td>
+                                            <td class="hint"><a onclick="alert('{{ item[1] }}')">hint</a></td>
+                                        </tr>
+                                        {% endfor %}
+									</table>
 								</div>
 							</div>
 							<footer class="major">
@@ -119,16 +111,13 @@
 						<p class="copyright">&copy; 2023 Brandon Townes and David Johnston. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
+            <!-- Scanner Modal -->
+                {% include 'scanner.tpl' %}
+
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			{% include 'scripts.tpl' %}
 
 	</body>
 </html>
