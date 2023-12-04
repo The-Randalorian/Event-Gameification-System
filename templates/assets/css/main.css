@@ -3390,6 +3390,20 @@ input, select, textarea {
 					font-size: 0.9em;
 				}
 
+		@media screen and (max-width: 480px) {
+
+			#nav {
+				max-width: calc(100% - 2em);
+			}
+		}
+
+		@media screen and (max-width: 360px) {
+
+			#nav {
+				max-width: 100%;
+			}
+		}
+
 		/*@media screen and (max-width: 736px) {
 
 			#nav {
