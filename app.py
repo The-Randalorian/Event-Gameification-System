@@ -21,6 +21,17 @@ def assets_resource_file(resource, file):
     return send_from_directory(f"templates/assets/{resource}", file)
 
 
+@app.route("/assets/<resource>/{subfolder}/<file>")
+def assets_resource_subfolder_file(resource, subfolder, file):
+    return send_from_directory(f"templates/assets/{resource}/{subfolder}", file)
+
+
+@app.route("/sw.js")
+def service_worker():
+    return send_from_directory(f"templates/assets/pwa", "sw.js")
+
+
+@app.route("/offline.html")
 @app.route("/")
 def homepage():  # put application's code here
     user_id, needs_cookie = util.get_make_user(request)
