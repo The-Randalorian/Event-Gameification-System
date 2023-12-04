@@ -35,14 +35,14 @@ var preLoad = function(){
         "/assets/webfonts/fa-solid-900.ttf",
         "/assets/webfonts/fa-solid-900.woff",
         "/assets/webfonts/fa-solid-900.woff2",
-        "/assets/images/logo.png",
-        "/assets/images/phone-icon.png",
-        "/assets/images/pic01.jpg",
-        "/assets/images/pic02.jpg",
-        "/assets/images/pic03.jpg",
-        "/assets/images/pic04.jpg",
-        "/assets/images/pic05.jpg",
-        "/assets/images/pic06.jpg",
+        "/images/logo.png",
+        "/images/phone-icon.png",
+        "/images/pic01.jpg",
+        "/images/pic02.jpg",
+        "/images/pic03.jpg",
+        "/images/pic04.jpg",
+        "/images/pic05.jpg",
+        "/images/pic06.jpg",
         "/offline.html"]);
   });
 };
