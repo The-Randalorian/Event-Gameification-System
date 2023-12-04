@@ -6,7 +6,44 @@ var preLoad = function(){
   console.log("Installing web app");
   return caches.open("offline").then(function(cache) {
     console.log("caching index and important routes");
-    return cache.addAll(["/assets/", "/assets", "/offline.html"]);
+    return cache.addAll([
+        "/assets/css/fontawesome-all.min.css",
+        "/assets/css/noscript.css",
+        "/assets/css/main.css",
+        "/assets/css/images/overlay.png",
+        "/assets/js/breakpoints.min.js",
+        "/assets/js/browser.min.js",
+        "/assets/js/html5-qrcode.min.js",
+        "/assets/js/jquery.min.js",
+        "/assets/js/jquery.scrollex.min.js",
+        "/assets/js/jquery.scrolly.min.js",
+        "/assets/js/main.js",
+        "/assets/js/modal-camera.js",
+        "/assets/js/util.js",
+        "/assets/webfonts/fa-brands-400.eot",
+        "/assets/webfonts/fa-brands-400.svg",
+        "/assets/webfonts/fa-brands-400.ttf",
+        "/assets/webfonts/fa-brands-400.woff",
+        "/assets/webfonts/fa-brands-400.woff2",
+        "/assets/webfonts/fa-regular-400.eot",
+        "/assets/webfonts/fa-regular-400.svg",
+        "/assets/webfonts/fa-regular-400.ttf",
+        "/assets/webfonts/fa-regular-400.woff",
+        "/assets/webfonts/fa-regular-400.woff2",
+        "/assets/webfonts/fa-solid-900.eot",
+        "/assets/webfonts/fa-solid-900.svg",
+        "/assets/webfonts/fa-solid-900.ttf",
+        "/assets/webfonts/fa-solid-900.woff",
+        "/assets/webfonts/fa-solid-900.woff2",
+        "/assets/images/logo.png",
+        "/assets/images/phone-icon.png",
+        "/assets/images/pic01.jpg",
+        "/assets/images/pic02.jpg",
+        "/assets/images/pic03.jpg",
+        "/assets/images/pic04.jpg",
+        "/assets/images/pic05.jpg",
+        "/assets/images/pic06.jpg",
+        "/offline.html"]);
   });
 };
 
