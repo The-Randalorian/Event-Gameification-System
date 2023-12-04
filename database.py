@@ -62,3 +62,13 @@ def get_session():
 if __name__ == "__main__":
     os.makedirs(SQLITE_DB_PATH, exist_ok=True)
     Base.metadata.create_all(engine)
+    with get_session() as session:
+        tasks = [
+            Task(task="Task 1", hint="Hint for Task 1"),
+            Task(task="Task 2", hint="Hint for Task 2"),
+            Task(task="Task 3", hint="Hint for Task 3"),
+            Task(task="Task 4", hint="Hint for Task 4"),
+            Task(task="Task 5", hint="Hint for Task 5"),
+        ]
+        session.add_all(tasks)
+        session.commit()
