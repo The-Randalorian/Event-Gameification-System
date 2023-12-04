@@ -21,7 +21,7 @@ def assets_resource_file(resource, file):
     return send_from_directory(f"templates/assets/{resource}", file)
 
 
-@app.route("/assets/<resource>/{subfolder}/<file>")
+@app.route("/assets/<resource>/<subfolder>/<file>")
 def assets_resource_subfolder_file(resource, subfolder, file):
     return send_from_directory(f"templates/assets/{resource}/{subfolder}", file)
 
