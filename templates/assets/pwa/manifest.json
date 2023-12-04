@@ -85,7 +85,7 @@
     },
     {
       "src": "assets/pwa/ios/120.png",
-      "sizes": "120",
+      "sizes": "120x120",
       "type": "image/png"
     },
     {
