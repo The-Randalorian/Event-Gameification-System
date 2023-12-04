@@ -7,4 +7,4 @@ WORKDIR HCI_Project
 RUN pipenv install --deploy
 RUN pipenv run python database.py
 
-ENTRYPOINT ["pipenv", "run", "python", "app.py"]
+ENTRYPOINT ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
